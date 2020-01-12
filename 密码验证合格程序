@@ -1,0 +1,33 @@
+import re
+l = []
+while True:
+    try:
+        l.append(input())
+    except:
+        break
+        
+def same_string(s): # abcdabc 7
+    for i in range(len(s)-2):
+        if s.count(s[i:i+3]) > 1:
+            return True
+    return False
+for w in l:
+    if len(w) <= 8:
+        print("NG")
+        continue
+    count = 0
+    if re.search("[a-z]",w):
+        count = count + 1
+    if re.search("[A-Z]",w):
+        count = count + 1
+    if re.search("[0-9]",w):
+        count = count + 1
+    if re.search("[^a-zA-z0-9]",w):
+        count = count + 1
+    if count < 3:
+        print("NG")
+        continue
+    if same_string(w):
+        print("NG")
+        continue
+    print("OK")
